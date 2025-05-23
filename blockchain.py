@@ -6,7 +6,8 @@
 
 import hashlib
 import json
-from datetime import datetime
+from datetime import datetime, timezone
+
 
 # individual blocks
 class Block:
@@ -25,7 +26,7 @@ class Block:
 
     def compute_hash(self):
         block_string = json.dumps(self.__dict__, sort_keys=True)
-        return hashlib.sha256(block_string.encode()).hexdigest() # potentially create my own hashing function?
+        return hashlib.sha256(block_string.encode()).hexdigest() 
     
     
 # The entire blockchain
@@ -37,7 +38,7 @@ class Blockchain:
 
     # genesis block is the first block in the chain!
     def create_genesis_block(self):
-        genesis_block = Block(0, [], str(datetime(datetime.timezone.utc)), "0")
+        genesis_block = Block(0, [], str(datetime.now(timezone.utc)), "0")
         self.chain.append(genesis_block)
 
     def get_last_block(self):
@@ -63,6 +64,9 @@ class Blockchain:
             computed_hash = block.compute_hash()
         return computed_hash
 
+
+    def add_new_transaction(self, transaction):
+        self.unconfirmed_transactions.append(transaction)
     
     def is_valid_proof(self, block, block_hash):
         return block_hash.startswith('00') and block_hash == block.compute_hash()
@@ -75,7 +79,7 @@ class Blockchain:
         last_block = self.get_last_block()
         new_block = Block(index=last_block.index + 1,
                           transactions=self.unconfirmed_transactions,
-                          timestamp=str(datetime(datetime.timezone.utc)), 
+                          timestamp=str(datetime.now(timezone.utc)), 
                           previous_hash=last_block.hash)
 
         proof = self.proof_of_work(new_block)

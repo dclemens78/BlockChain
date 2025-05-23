@@ -1,0 +1,14 @@
+private_key.pem
+public_key.pem
+
+# 🧠 Python bytecode cache
+__pycache__/
+*.pyc
+
+# 💣 OS/system files
+.DS_Store
+Thumbs.db
+
+# 📦 Environment files (if using virtualenv)
+.env
+.venv/
