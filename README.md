@@ -106,8 +106,10 @@ Chain length: 3 blocks
 ## License
 MIT License — Free to use, modify, and learn from.
 
+## Acknowledgement
+This project was inspired by the original C++ Bitcoin source code, developed by Satoshi Nakamoto in 2009
 
-#### IMPORTANT NOTE FROM CREATOR
+##IMPORTANT NOTE FROM CREATOR
 
 Hello readers. I appreciate all of you who have cloned this repo. I would just like to iterate however, that I currently have NO PLANS of adding utility to these coins, meaning you will not make money from mining them. This project was created due to my admiration for the original bitcoin source code, and growing admiration for blockchain technology. I plan to keep creating unique Python projects both related to crypto and AI/ML. If you have any suggestions or would like to expand upon this project with me, please reach out. 
 Email: danielcle0708@gmail.com
